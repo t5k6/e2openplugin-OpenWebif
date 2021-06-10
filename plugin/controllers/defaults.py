@@ -10,7 +10,7 @@ from Components.Network import iNetwork
 
 from enigma import eEnv
 
-OPENWEBIFVER = "OWIF 1.4.7"
+OPENWEBIFVER = "OWIF 1.4.8"
 
 PLUGIN_NAME = 'OpenWebif'
 PLUGIN_DESCRIPTION = "OpenWebif Configuration"
@@ -131,3 +131,30 @@ EXT_EVENT_INFO_SOURCE = getExtEventInfoProvider()
 TRANSCODING = getTranscoding()
 
 # TODO: improve PICON_PATH, GLOBALPICONPATH
+
+
+def getOpenwebifPackageVersion():
+	try:
+		version = os.popen('/usr/bin/opkg -V0 list_installed enigma2-plugin-extensions-openwebif').readline().split()[2]  # nosec
+	except IndexError:
+		# for Graterlia OS
+		version = 'unknown'
+		if os.path.isfile('/var/lib/opkg/info/enigma2-plugin-openwebif.control'):
+			version = os.popen('cat /var/lib/opkg/info/enigma2-plugin-openwebif.control | grep Version | awk -F": " \'{print $2}\'').readline()  # nosec
+	return version
+
+
+OPENWEBIFPACKAGEVERSION = getOpenwebifPackageVersion()
+
+
+def getUserCSS(fn):
+	if os.path.isfile(fn):
+		return open(fn, 'r').read()
+	else:
+		return ''
+
+
+USERCSSCLASSIC = getUserCSS('/etc/enigma2/owfclassic.css')
+
+
+USERCSSRESPONSIVE = getUserCSS('/etc/enigma2/owfresponsive.css')

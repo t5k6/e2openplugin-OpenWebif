@@ -519,6 +519,7 @@ tstrings = {
 	'min_movie_list': _("Minimal movie list"),
 	'min_timer_list': _("Minimal timer list"),
 	'min_epg_list': _("Minimal EPG list"),
+	'now_next_columns': _("Now/Next Columns"),
 	'remove_package': _("Remove Package"),
 	'update_package': _("Update Package"),
 	'install_package': _("Install Package"),
@@ -567,5 +568,11 @@ tstrings = {
 	'skins': _("Skins"),
 	'use_classic_design': _("Use classic interface"),
 	'use_modern_design': _("Use modern interface"),
-	'showallpackages': _("Show all packages")
+	'showallpackages': _("Show all packages"),
+
+	'recordingtype': _("Recording Type"),
+	'normal': _("normal"),
+	'descrambledecm': _("descramble and record ecm"),
+	'scrambledecm': _("don't descramble, record ecm")
+
 }
